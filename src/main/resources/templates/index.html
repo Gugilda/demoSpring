@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<table>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Address</th>
+<tr th:each="companies : ${companies}">
+    <td th:text="${companies.id}"></td>
+    <td th:text="${companies.name}"></td>
+    <td th:text="${companies.address}"></td>
+    <td><a th:href="@{'/delete/' + ${companies.id}}">delete</a> </td>
+</tr>
+</table>
+<a href="/company">Add</a><br>
+<a href="/search">Search</a>
+
+</body>
+</html>

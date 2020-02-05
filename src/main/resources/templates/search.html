@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+
+    <form th:object="${company}" th:action="@{/search}" method="get">
+        <select name="field">
+            <option name="name" id="name">name</option>
+            <option name="address" id="address">address</option>
+        </select>
+
+        <input type="text" name="query" id="search-input"/>
+        <input type="submit" value="Search" />
+    </form>
+
+    <div th:if="${not #lists.isEmpty(search)}">
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+            </tr>
+            <tr th:each="company: ${search}">
+                <td th:text="${company.id}">id</td>
+                <td th:text="${company.name}">name</td>
+                <td th:text="${company.address}">address</td>
+
+            </tr>
+        </table>
+    </div>
+    <a href="/index">Main</a><br>
+    <a href="/add">Add</a>
+</body>
+</html>

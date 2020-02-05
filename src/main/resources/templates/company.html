@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<form action="#" method="post" th:action="@{/company}" th:object="${company}" >
+    <p>Name: <input type="text" th:field="*{name}" placeholder="enter name"/></p>
+    <span th:if="${#fields.hasErrors()}" th:errors="*{name}"></span>
+    <p>Address: <input type="text" th:field="*{address}" placeholder="enter address"/></p>
+    <span th:if="${#fields.hasErrors()}" th:errors="*{address}"></span>
+
+    <button type="submit">Add</button>
+</form>
+
+<a href="/">Main</a>
+</body>
+</html>
+
