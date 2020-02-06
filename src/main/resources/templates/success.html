@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-Successfully  added:
-<form th:object="${company}" >
-    <p th:text="*{name} + ', ' + *{address}">company</p>
+<div style="margin-left: 20px">
+    Successfully added:
+    <form th:object="${company}">
+        <p th:text="*{name} + ', ' + *{address}">company</p>
 
-</form>
-<a href="/">Main</a><br>
-<a href="/company">Add</a><br>
-<a href="/search">Search</a>
+    </form>
+</div>
+<div class="form-group mx-sm-3 mb-2">
+    <p>
+        <a class="btn btn-primary" href="/">Main</a>
+        <a class="btn btn-primary" href="/company">Add</a>
+        <a class="btn btn-primary" href="/search">Search</a>
+    </p>
+</div>
 </body>
 </html>

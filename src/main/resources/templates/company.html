@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+
 <body>
-<form action="#" method="post" th:action="@{/company}" th:object="${company}" >
-    <p>Name: <input type="text" th:field="*{name}" placeholder="enter name"/></p>
-    <span th:if="${#fields.hasErrors()}" th:errors="*{name}"></span>
-    <p>Address: <input type="text" th:field="*{address}" placeholder="enter address"/></p>
-    <span th:if="${#fields.hasErrors()}" th:errors="*{address}"></span>
+<div class="form-group mx-sm-3 mb-2" style="width: 20%">
+    <form action="#" method="post" th:action="@{/company}" th:object="${company}">
+        <div class="form-group">
+            <p>Name <input class="form-control" type="text" th:field="*{name}" placeholder="enter name"/></p>
+            <span class="text-danger" th:if="${#fields.hasErrors()}" th:errors="*{name}"></span>
+        </div>
+        <div class="form-group">
+            <p>Address</p><input class="form-control" type="text" th:field="*{address}" placeholder="enter address"/>
+            <span class="text-danger" th:if="${#fields.hasErrors()}" th:errors="*{address}"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>
 
-    <button type="submit">Add</button>
-</form>
-
-<a href="/">Main</a>
+<div class="form-group mx-sm-3 mb-2">
+    <p>
+        <a class="btn btn-primary" href="/">Main</a>
+        <a class="btn btn-primary" href="/search">Search</a>
+    </p>
+</div>
 </body>
 </html>
 

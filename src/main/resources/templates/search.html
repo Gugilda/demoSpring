@@ -1,34 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
 <body>
 
-
+<div class="form-group mx-sm-3 mb-2" style="width: 20%">
     <form th:object="${company}" th:action="@{/search}" method="get">
-        <select name="field">
-            <option name="name" id="name">name</option>
-            <option name="address" id="address">address</option>
-        </select>
 
-        <input type="text" name="query" id="search-input"/>
-        <input type="submit" value="Search" />
+        <label>Filter by</label>
+        <div class="form-group">
+            <select name="field">
+                <option name="name" id="name">name</option>
+                <option name="address" id="address">address</option>
+            </select>
+        </div>
+        <label>Contain the words</label>
+        <div class="form-group">
+            <input type="text" name="query" id="search-input"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+
     </form>
+</div>
 
-    <div th:if="${not #lists.isEmpty(search)}">
-        <table>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Address</th>
-            </tr>
-            <tr th:each="company: ${search}">
-                <td th:text="${company.id}">id</td>
-                <td th:text="${company.name}">name</td>
-                <td th:text="${company.address}">address</td>
+<div th:if="${not #lists.isEmpty(search)}" style="width: 40%">
 
-            </tr>
-        </table>
-    </div>
-    <a href="/index">Main</a><br>
-    <a href="/add">Add</a>
+    <table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Address</th>
+        </tr>
+        <tr th:each="company: ${search}">
+            <td th:text="${company.id}">id</td>
+            <td th:text="${company.name}">name</td>
+            <td th:text="${company.address}">address</td>
+
+        </tr>
+    </table>
+</div>
+<div class="form-group mx-sm-3 mb-2">
+    <p>
+        <a class="btn btn-primary" href="/">Main</a>
+        <a class="btn btn-primary" href="/add">Add</a>
+    </p>
+</div>
 </body>
 </html>

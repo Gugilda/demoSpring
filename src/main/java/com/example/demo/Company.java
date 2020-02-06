@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+
 import org.hibernate.validator.constraints.Length;
 
 @Entity
@@ -14,12 +15,12 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @NotBlank(message = "Cannot by empty")
-    @Length(min=2,max=100,message = "2 < Name < 100")
+    @NotBlank(message = "Cannot be empty")
+    @Length(min = 2, max = 100, message = "2 < Name < 100")
     private String name;
 
-    @NotBlank(message = "Cannot by empty")
-    @Length(min=2,max=1000, message = "2 < Address < 1000")
+    @NotBlank(message = "Cannot be empty")
+    @Length(min = 2, max = 1000, message = "2 < Address < 1000")
     private String address;
 
     public Company() {

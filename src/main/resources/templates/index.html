@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
 <body>
-<table>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Address</th>
-<tr th:each="companies : ${companies}">
-    <td th:text="${companies.id}"></td>
-    <td th:text="${companies.name}"></td>
-    <td th:text="${companies.address}"></td>
-    <td><a th:href="@{'/delete/' + ${companies.id}}">delete</a> </td>
-</tr>
-</table>
-<a href="/company">Add</a><br>
-<a href="/search">Search</a>
+<div style="width: 40%">
+    <table class="table table-striped">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Address</th>
+        <tr th:each="companies : ${companies}">
+            <td th:text="${companies.id}"></td>
+            <td th:text="${companies.name}"></td>
+            <td th:text="${companies.address}"></td>
+            <td><a th:href="@{'/delete/' + ${companies.id}}">delete</a></td>
+        </tr>
+    </table>
+</div>
+<div style="margin-left: 5px">
+    <p>
+        <a class="btn btn-primary" href="/company">Add</a>
+        <a class="btn btn-primary" href="/search">Search</a>
+    </p>
+</div>
 
 </body>
 </html>
