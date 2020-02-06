@@ -57,8 +57,8 @@ public class SiteController {
             return "company";
         }
 
-        //сделать проверку на дубль
         if (companyRepository.findByName(name).size() != 0) {
+            bindingResult.rejectValue("name",null,"company already exist");
             return "company";
         }
 
