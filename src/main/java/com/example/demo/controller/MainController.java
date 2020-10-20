@@ -1,12 +1,12 @@
-package com.example.demo;
+package com.example.demo.controller;
 
 
-import net.bytebuddy.description.field.FieldList;
+import com.example.demo.repos.CompanyRepo;
+import com.example.demo.entity.Company;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,20 +18,20 @@ import java.util.*;
 
 @org.springframework.stereotype.Controller
 
-public class SiteController {
+public class MainController {
     @Autowired
-    private CompanyRepository companyRepository;
+    private CompanyRepo companyRepo;
 
     @GetMapping()
     public String index(Model model) {
-        Iterable<Company> companies = companyRepository.findAll();
+        Iterable<Company> companies = companyRepo.findAll();
         model.addAttribute("companies", companies);
         return "index";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Integer id) {
-        companyRepository.deleteById(id);
+        companyRepo.deleteById(id);
         return "redirect:/";
     }
 
@@ -40,9 +40,9 @@ public class SiteController {
 
         List<Company> result = null;
         if ("name".equals(field))
-            result = companyRepository.findByName(query);
+            result = companyRepo.findByName(query);
         else if ("address".equals(field)) {
-            result = companyRepository.findByAddress(query);
+            result = companyRepo.findByAddress(query);
         }
         model.addAttribute("search", result);
         return "search";
@@ -57,13 +57,13 @@ public class SiteController {
             return "company";
         }
 
-        if (companyRepository.findByName(name).size() != 0) {
+        if (companyRepo.findByName(name).size() != 0) {
             bindingResult.rejectValue("name",null,"company already exist");
             return "company";
         }
 
         company = new Company(name, address);
-        companyRepository.save(company);
+        companyRepo.save(company);
 
         return "success";
     }

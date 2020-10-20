@@ -1,11 +1,11 @@
-package com.example.demo;
+package com.example.demo.repos;
 
+import com.example.demo.entity.Company;
 import org.springframework.data.repository.CrudRepository;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
-public interface CompanyRepository extends CrudRepository<Company, Integer> {
+public interface CompanyRepo extends CrudRepository<Company, Integer> {
 
     void deleteById(Integer Id);
     List<Company> findByName(String name);
